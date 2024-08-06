@@ -13,10 +13,10 @@
 <body>
     <?php
         include('includes/conexao.php');
-        $sql = "SELECT cli.id, cli.nome nomecliente, cli.email, cli.ativo, 
-                cid.nome nomecidade, cid.estado
-                FROM cliente cli 
-                LEFT JOIN cidade cid on cid.id = cli.id_cidade";
+        $sql = "SELECT p.id, p.nome nomepessoa, p.email, p.endereco, p.bairro, p.id_cidade, p.cep, 
+        cid.nome_cidade nomecidade, cid.estado
+        FROM pessoa p 
+        LEFT JOIN cidade cid on cid.id = p.id_cidade";
         //echo $sql;     
         $result = mysqli_query($con, $sql); // Executa a consulta
     ?>
@@ -27,8 +27,9 @@
             <tr>
                 <th>Nome</th>
                 <th>email</th>
-                <th>id_Cidade</th>
+                <th>Endereco</th>
                 <th>bairro</th> 
+                <th>Cidade</th>
                 <th>CEP</th>               
                 <th>Alterar</th>
                 <th>Deletar</th>
@@ -39,10 +40,11 @@
             while($row = mysqli_fetch_array($result))
             {
                 echo "<tr>";
-                echo "<td>".$row['nome']."</td>";
+                echo "<td>".$row['nomepessoa']."</td>";
                 echo "<td>".$row['email']."</td>";
-                echo "<td>".$row['id_cidade']."</td>";
+                echo "<td>".$row['endereco']."</td>";
                 echo "<td>".$row['bairro']."</td>";
+                echo "<td>".$row['nomecidade']."</td>";
                 echo "<td>".$row['cep']."</td>";
                 echo "<td><a href='alteraCliente.php?id="
                 .$row['id']."'>Alterar</a></td>";

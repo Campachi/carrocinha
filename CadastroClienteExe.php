@@ -15,24 +15,25 @@
         include('includes/conexao.php');
         $nome = $_POST['nome'];
         $email = $_POST['email'];
-        $cidade = $_POST['cidade'];
         $endereco = $_POST['endereco'];
         $bairro = $_POST['bairro'];
+        $cidade = $_POST['cidade'];
         $cep = $_POST['cep'];
 
 
         echo "<h1>Dados do cliente</h1>";
         echo "Nome: $nome<br>";
         echo "Email: $email<br>";
-        echo "cidade: $cidade<br>";
-        echo "bairro: $bairro<br>";
-        echo "cep: $cep<br>";
+        echo "Endereco: $endereco<br>";
+        echo "Bairro: $bairro<br>";
+        echo "Cidade: $cidade<br>";
+        echo "Cep: $cep<br>";
 
         
         $sql = "INSERT INTO pessoa
-                (nome,email,id_cidade,endereco,bairro,cep)";
+                (nome,email,endereco,bairro,id_cidade,cep)";
         $sql .= " VALUES('".$nome."','".$email."','"
-             .$cidade."',".$endereco.",'".$bairro."','".$cep."')";
+             .$endereco."',".$bairro.",'".$cidade."','".$cep."')";
         echo $sql;
         // Executa comando no banco de dados
         $result = mysqli_query($con,$sql);
