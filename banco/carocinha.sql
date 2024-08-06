@@ -4,11 +4,7 @@ CREATE DATABASE carrosinha_control;
 
 USE carrosinha_control;
 
-CREATE TABLE cidade (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    nome_cidade VARCHAR(255) NOT NULL,
-    estado VARCHAR(255) NOT NULL
-);
+
 
 
 CREATE TABLE pessoa (
@@ -17,7 +13,7 @@ CREATE TABLE pessoa (
     email VARCHAR(255) NOT NULL UNIQUE,
     endereco VARCHAR(255) NOT NULL,
     bairro VARCHAR(255) NOT NULL,
-    id_cidade INT,
+    cidade VARCHAR(255) NOT NULL,
     cep VARCHAR(10) NOT NULL,
     FOREIGN KEY (id_cidade) REFERENCES cidade(id)
 );
