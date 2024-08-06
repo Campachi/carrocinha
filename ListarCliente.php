@@ -26,8 +26,8 @@
         <thead>
             <tr>
                 <th>Nome</th>
-                <th>id_Endereço</th>
-                <th>Cidade</th>
+                <th>email</th>
+                <th>id_Cidade</th>
                 <th>bairro</th> 
                 <th>CEP</th>               
                 <th>Alterar</th>
@@ -36,15 +36,14 @@
         </thead>
         <tbody>
         <?php //mysqli_fetch_array lê uma linha por vez
-            while($row = mysqli_fetch_array($result)){
-                $ativo = $row['ativo'] == '1' ? 'Sim' : 'Não';
+            while($row = mysqli_fetch_array($result))
+            {
                 echo "<tr>";
-                echo "<td>".$row['id']."</td>";
-                echo "<td>".$row['nomecliente']."</td>";
+                echo "<td>".$row['nome']."</td>";
                 echo "<td>".$row['email']."</td>";
-                echo "<td>".$ativo."</td>";
-                echo "<td>".$row['nomecidade']."</td>";
-                echo "<td>".$row['estado']."</td>";
+                echo "<td>".$row['id_cidade']."</td>";
+                echo "<td>".$row['bairro']."</td>";
+                echo "<td>".$row['cep']."</td>";
                 echo "<td><a href='alteraCliente.php?id="
                 .$row['id']."'>Alterar</a></td>";
                 echo "<td><a href='deletaCliente.php?id="
